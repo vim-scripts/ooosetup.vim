@@ -1,0 +1,148 @@
+REM vim: ft=ooosetup
+
+REM Author:	 Olivier Mengué <NO.dol.SP.men.AM@NOSPAM.openoffice.org>
+REM Copyright:   (c) 2004 Olivier Mengué
+REM Description: Test suite for syntax/ooosetup.vim
+
+REM Invalid comment below
+REMark
+
+
+REM TODO Fix this error
+aaaa
+
+REM Test:
+
+[Environment]
+REM Comment
+InstallationMode=Install_Normal
+InstallationMode=Install_Network
+InstallationMode=Install_Workstation
+InstallationMode=ReInstall
+InstallationMode=DeInstall
+
+InstallationType=Standard
+InstallationType=Specify
+InstallationType=Minimum
+InstallationType=Workstation
+
+Migration=YES
+Migration=no
+Migration=TRUE
+Migration=false
+
+LanguageList=33
+
+DestinationPath=C:\OpenOffice.org
+DestinationPath=C:\Program Files\OpenOffice.org
+DestinationPath=/opt/openoffice.org
+DestinationPath=<home>\zz
+DestinationPath=<firstfree>\zz
+
+StartProcedure=StartHook
+EndProcedure=EndHook
+
+REM Errors:
+InstallationMode=error
+InstallationMode=
+InstallationType=error
+InstallationType=
+Migration=error
+Migration=
+LanguageList=Abc
+LanguageList=
+DestinationPath=zz<firstfree>\zz
+DestinationPath=zz<home>\zz
+DestinationPath=
+StartProcedure=
+EndProcedure=
+Error=error
+
+
+[Windows_Desktop_Integration]
+REM Comment
+RegisterAsDefaultHtmlEditor=yes
+RegisterAsDefaultHtmlEditor=TRUE
+RegisterForMsWord=true
+RegisterForMsExcel=True
+RegisterForMsPowerPoint=tRUE
+
+RegisterAsDefaultHtmlEditor=no
+RegisterAsDefaultHtmlEditor=False
+RegisterForMsWord=FALSE
+RegisterForMsExcel=fALSE
+RegisterForMsPowerPoint=False
+
+REM Errors:
+bla
+RegisterAsDefaultHtmlEditor=Error
+RegisterAsDefaultHtmlEditor=Error
+RegisterForMsWord=Error
+RegisterForMsExcel=Error
+RegisterForMsPowerPoint=Error
+RegisterAsDefaultHtmlEditor=TRUE,FALSE
+RegisterAsDefaultHtmlEditor=
+RegisterForMsWord=
+RegisterForMsExcel=
+RegisterForMsPowerPoint=
+anything=blabla
+Error=TRUE
+Error=YES
+Error=FALSE
+Error=NO
+
+[Module_Specify]
+REM Comment
+Set1=gid_Module_Root
+InstallModuleSet=Set1
+InstallProcedure=InstallHook
+DeInstallModuleSet=Set1
+DeInstallProcedure=DeInstallHook
+
+[Java]
+JavaSupport=PreInstalled_or_None
+JavaSupport=None
+JavaSupport=NewInstall
+REM Errors:
+JavaSupport=error
+Error=None
+
+
+[Procedures] fdgdfg
+
+' Comment
+REM Comment
+Sub InstallHook()
+    DeSelectModuleSet("Set2")
+    SelectModuleSet("Set1")
+End Sub
+
+Sub DeInstallHook()
+    DeSelectModuleSet("Set2")
+    SelectModuleSet("Set1")
+End Sub
+
+Sub StartHook()
+    Dim a As String
+    a = DirEntry(GetSetupEnv.DestPath, "help", "01")
+    ShowSetup
+    SetUserFirstName("")
+    SetUserLastName("")
+    SetUserID Environ("USERNAME")
+    SetUserEMail("")
+    SetUserStreet("")
+    SetUserZip("")
+    SetUserCity("")
+    SetUserCompanyname("")
+End Sub
+
+Sub EndHook()
+    HideSetup
+    MsgBox "Install finished."
+End Sub
+
+REM Abc: DEF
+
+[fdgdfg]
+REM Invalid section
+

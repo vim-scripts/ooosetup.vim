@@ -1,0 +1,9 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1117
+
+This script provides syntax highlighting for the OpenOffice 1.x and StarOffice 5.2, 6.x, 7.x setup responses file as documented by http://installation.openoffice.org/01RESPONSE_SO52_final_rev2.pdf
+
+A test suite for the highlighting is provided (TestSuite.OOo) to help discover bugs. Do not use it with the setup program.
+
+Release notes for 1.0 :
+- syntax is quite strict about spaces (stricter than the setup program). The TestSuite.OOo will show you what is recognized.
+- the Module_Specify may not correctly highlight module sets definitions. Patches are welcome.
